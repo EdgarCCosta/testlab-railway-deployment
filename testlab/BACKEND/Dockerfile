@@ -9,8 +9,8 @@ RUN apt-get update && apt-get install -y unzip git curl \
 # Instalar Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Copiar solo el backend
-COPY testlab/backend/ ./
+# Copiar solo el backend (ajustado al contexto de Railway)
+COPY backend/ ./
 
 # Instalar dependencias
 RUN composer install --no-dev --optimize-autoloader
