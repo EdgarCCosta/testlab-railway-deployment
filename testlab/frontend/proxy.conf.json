@@ -34,13 +34,13 @@
     "pathRewrite": { "^/api": "" },
     "logLevel": "debug"
   },
-  // "/login": {
+ // "/login": {
   //   "target": "http://localhost/proyecto/testlab/testlab/backend/public/api",
   //   "secure": false,
   //   "changeOrigin": true,
   //   "logLevel": "debug"
   // },
-  
+ 
   "/api/login": {
     "target": "http://localhost:8000",
     "secure": false,
