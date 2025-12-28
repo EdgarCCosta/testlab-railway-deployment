@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+
+        DB::table('users')->truncate();
         // 1. Crear usuarios
         $admin = User::create([
             'name' => 'Admin UUser',
