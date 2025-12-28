@@ -10,6 +10,7 @@ use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/ping', function () {return response()->json(['status' => 'ok']);});
+Route::options('/login', function () {return response()->noContent();});
 //LOGIN
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/users2', [UserController::class, 'index']);
