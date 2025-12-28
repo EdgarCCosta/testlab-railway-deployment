@@ -7,7 +7,7 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
-        '*',
+        'https://testlabfrontend-production.up.railway.app',
     ],
 
     'allowed_origins_patterns' => [],
