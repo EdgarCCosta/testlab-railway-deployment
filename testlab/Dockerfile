@@ -44,4 +44,5 @@ RUN php artisan migrate --force
 EXPOSE 8080
 
 # Arrancar Laravel
-CMD php -S 0.0.0.0:${PORT:-8080} -t public
+CMD php artisan migrate --force && php -S 0.0.0.0:${PORT:-8080} -t public
+
