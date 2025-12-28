@@ -9,24 +9,13 @@ use App\Models\TestCase;
 use App\Models\TestExecution;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
+
 
 class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-      DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-
-    // Truncar las tablas en el orden correcto
-    DB::table('test_executions')->truncate();
-    DB::table('test_cases')->truncate();
-    DB::table('versions')->truncate();
-    DB::table('projects')->truncate();
-    DB::table('users')->truncate();
-
-    // Reactivar las claves foráneas
-    DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-        
+          
         // 1. Crear usuarios
         $admin = User::create([
             'name' => 'Admin UUser',

@@ -40,4 +40,4 @@ ENV DB_CONNECTION=mysql \
 EXPOSE 8080
 
 # Arrancar Laravel y ejecutar migraciones + seed
-CMD php artisan migrate --force --seed && php -S 0.0.0.0:${PORT:-8080} -t public
+CMD php artisan migrate:fresh --force --seed && php -S 0.0.0.0:${PORT:-8080} -t public
