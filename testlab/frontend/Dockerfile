@@ -10,4 +10,4 @@ COPY testlab/frontend/ ./
 RUN npm install && npm run build
 
 # Servir la SPA
-CMD npx serve -s dist/testlav -l ${PORT:-8081}
+CMD npx serve -s dist/testlab -l ${PORT:-8081}
