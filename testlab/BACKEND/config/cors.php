@@ -2,7 +2,7 @@
 
 return [
 
-    'paths' => ['api/*'],
+    'paths' => ['api/*', 'login', 'logout'],
 
     'allowed_methods' => ['*'],
 
@@ -10,7 +10,14 @@ return [
         'https://testlabfrontend-production.up.railway.app',
     ],
 
+    'allowed_origins_patterns' => [],
+
     'allowed_headers' => ['*'],
 
-    'supports_credentials' => false,
+    'exposed_headers' => [],
+
+    'max_age' => 0,
+
+    'supports_credentials' => true,
+
 ];

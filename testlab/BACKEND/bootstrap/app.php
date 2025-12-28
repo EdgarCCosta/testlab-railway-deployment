@@ -16,6 +16,8 @@ return Application::configure(basePath: dirname(__DIR__))
         // Sanctum (modo API o SPA)
         $middleware->statefulApi();
 
+        $middleware->append(\Illuminate\Http\Middleware\HandleCors::class);
+
         // Middleware de roles
         $middleware->alias([
             'role' => \App\Http\Middleware\RoleMiddleware::class,
