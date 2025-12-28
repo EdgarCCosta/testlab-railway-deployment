@@ -1,6 +1,6 @@
 FROM php:8.4-cli
 
-# Instalar dependencias del sistema
+# Instalar dependencias del sistema y extensiones necesarias
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
@@ -22,11 +22,11 @@ COPY testlab/BACKEND /app
 # Instalar dependencias PHP
 RUN composer install --no-dev --optimize-autoloader
 
-# Ejecutar migraciones automáticamente
-RUN php artisan migrate --force
-
 # Limpiar cache (opcional pero recomendable)
 RUN php artisan config:clear && php artisan route:clear && php artisan view:clear
+
+# Ejecutar migraciones automáticamente
+RUN php artisan migrate --force
 
 # Exponer puerto Railway
 EXPOSE 8080
