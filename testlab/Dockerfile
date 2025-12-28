@@ -20,14 +20,17 @@ WORKDIR /app
 # Copiar proyecto
 COPY testlab/BACKEND /app
 
+# Copiar entrypoint
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 # Instalar dependencias PHP
 RUN composer install --no-dev --optimize-autoloader
 
 # Limpiar caches de Laravel
 RUN php artisan config:clear && php artisan route:clear && php artisan view:clear
 
-# **Variables de entorno obligatorias para MySQL**
-# Se leen desde Railway al build / runtime
+# Variables de entorno obligatorias para MySQL (se leen desde Railway)
 ENV DB_CONNECTION=mysql \
     DB_HOST=mysql.railway.internal \
     DB_PORT=3306 \
@@ -37,10 +40,8 @@ ENV DB_CONNECTION=mysql \
     DEFAULT_ADMIN_USER=${DEFAULT_ADMIN_USER} \
     DEFAULT_ADMIN_PASS=${DEFAULT_ADMIN_PASS}
 
-
 # Exponer puerto
 EXPOSE 8080
 
-# Arrancar Laravel
-CMD php artisan migrate --force && php -S 0.0.0.0:${PORT:-8080} -t public
-
+# Arrancar Laravel con entrypoint
+CMD ["/entrypoint.sh"]
