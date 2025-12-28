@@ -37,8 +37,6 @@ ENV DB_CONNECTION=mysql \
     DEFAULT_ADMIN_USER=${DEFAULT_ADMIN_USER} \
     DEFAULT_ADMIN_PASS=${DEFAULT_ADMIN_PASS}
 
-# Ejecutar migraciones automáticamente usando las variables de entorno
-RUN php artisan migrate --force
 
 # Exponer puerto
 EXPOSE 8080
