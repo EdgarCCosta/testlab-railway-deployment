@@ -16,6 +16,27 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
+         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
+    // Lista de tablas a truncar
+    $tables = [
+        'users',
+        'projects',
+        'versions',
+        'test_cases',
+        'test_executions',
+        'personal_access_tokens',
+        'cache',
+        'jobs',
+    ];
+
+    foreach ($tables as $table) {
+        DB::table($table)->truncate();
+    }
+
+    // Reactivar checks de clave foránea
+    DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
         // 1. Crear usuarios
         $admin = User::create([
             'name' => 'Admin UUser',
