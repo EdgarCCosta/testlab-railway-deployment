@@ -9,10 +9,12 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/ping', function () {return response()->json(['status' => 'ok']);});
 Route::options('{any}', function () {
     return response()->noContent();
 })->where('any', '.*');
+
+Route::get('/ping', function () {return response()->json(['status' => 'ok']);});
+
 //LOGIN
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/users2', [UserController::class, 'index']);
